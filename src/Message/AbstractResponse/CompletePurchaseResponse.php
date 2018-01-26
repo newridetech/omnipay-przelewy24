@@ -1,10 +1,9 @@
 <?php
 
-namespace Omnipay\Przelewy24\Message;
+namespace Omnipay\Przelewy24\Message\AbstractResponse;
 
-/**
- * @todo: Reason this class exists
- */
+use Omnipay\Przelewy24\Message\AbstractResponse;
+
 class CompletePurchaseResponse extends AbstractResponse
 {
     /**

@@ -1,12 +1,11 @@
 <?php
 
-namespace Omnipay\Przelewy24\Message;
+namespace Omnipay\Przelewy24\Message\AbstractRequest;
 
 use Omnipay\Common\Message\ResponseInterface;
+use Omnipay\Przelewy24\Message\AbstractRequest;
+use Omnipay\Przelewy24\Message\AbstractResponse\CompletePurchaseResponse;
 
-/**
- * @todo: Reason this class exists
- */
 class CompletePurchaseRequest extends AbstractRequest
 {
     public function getSessionId()

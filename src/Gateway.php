@@ -4,6 +4,8 @@ namespace Omnipay\Przelewy24;
 
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Przelewy24\Exception\NonValidChannelException;
+use Omnipay\Przelewy24\Message\AbstractRequest\CompletePurchaseRequest;
+use Omnipay\Przelewy24\Message\AbstractRequest\PurchaseRequest;
 
 /**
  * Przelewy24 Gateway
@@ -114,7 +116,7 @@ class Gateway extends AbstractGateway
      */
     public function purchase(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Przelewy24\Message\PurchaseRequest', $parameters);
+        return $this->createRequest(PurchaseRequest::class, $parameters);
     }
 
     /**
@@ -123,6 +125,6 @@ class Gateway extends AbstractGateway
      */
     public function completePurchase(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Przelewy24\Message\CompletePurchaseRequest', $parameters);
+        return $this->createRequest(CompletePurchaseRequest::class, $parameters);
     }
 }

@@ -93,36 +93,19 @@ abstract class AbstractRequest extends BaseAbstractRequest
      * @return \Guzzle\Http\Message\Response
      * @throws \Guzzle\Common\Exception\InvalidArgumentException
      */
-    protected function sendRequest($method, $endpoint, $data = null)
+    protected function sendRequest($method, $endpoint, array $data = [])
     {
-        $this->httpClient->getEventDispatcher()->addListener(
-            'request.error',
-            function (Event $event) {
-                /**
-                 * @var \Guzzle\Http\Message\Response $response
-                 */
-                $response = $event['response'];
-
-                if ($response->isError()) {
-                    $event->stopPropagation();
-                }
-            }
-        );
-
-        if (null === $data) {
-            $data = array();
-        }
-
         $data['p24_merchant_id'] = $this->getMerchantId();
         $data['p24_pos_id'] = $this->getMerchantId();
 
         $httpRequest = $this->httpClient->createRequest(
             $method,
             $this->getEndpoint() . $endpoint,
-            null,
-            $data
+            [
+                'form_params' => $data
+            ]
         );
 
-        return $httpRequest->send();
+        return $this->httpClient->sendRequest($httpRequest);
     }
 }

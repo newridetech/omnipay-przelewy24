@@ -1,8 +1,9 @@
 <?php
 
-namespace Omnipay\Przelewy24\Message;
+namespace Omnipay\Przelewy24\Message\AbstractResponse;
 
 use Omnipay\Common\Message\RedirectResponseInterface;
+use Omnipay\Przelewy24\Message\AbstractResponse;
 
 class PurchaseResponse extends AbstractResponse implements RedirectResponseInterface
 {

@@ -1,12 +1,11 @@
 <?php
 
-namespace Omnipay\Przelewy24\Message;
+namespace Omnipay\Przelewy24\Message\AbstractRequest;
 
 use Omnipay\Common\Message\ResponseInterface;
+use Omnipay\Przelewy24\Message\AbstractRequest;
+use Omnipay\Przelewy24\Message\AbstractResponse\PurchaseResponse;
 
-/**
- * @todo: Reason this class exists
- */
 class PurchaseRequest extends AbstractRequest
 {
     private static $apiVersion = '3.2';

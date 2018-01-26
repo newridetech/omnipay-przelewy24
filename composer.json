@@ -1,5 +1,5 @@
 {
-  "name": "ticketswap/omnipay-przelewy24",
+  "name": "newridetech/omnipay-przelewy24",
   "type": "library",
   "description": "Przelewy24 driver for the Omnipay payment processing library",
   "keywords": [
@@ -11,7 +11,7 @@
     "payment",
     "transfer"
   ],
-  "homepage": "https://github.com/ticketswap/omnipay-przelewy24",
+  "homepage": "https://github.com/newridetech/omnipay-przelewy24",
   "license": "MIT",
   "authors": [
     {
@@ -22,11 +22,14 @@
   "autoload": {
     "psr-4": { "Omnipay\\Przelewy24\\" : "src/" }
   },
+  "minimum-stability": "dev",
   "require": {
-    "omnipay/common": "~2.2"
+    "omnipay/common": "^3",
+    "php": "^7",
+    "php-http/guzzle6-adapter": "^1.2@dev"
   },
   "require-dev": {
-    "omnipay/tests": "~2.0"
+    "omnipay/tests": "~3"
   },
   "scripts": {
     "test": "phpunit"

@@ -3,6 +3,8 @@
 namespace Omnipay\Przelewy24;
 
 use Omnipay\Przelewy24\Exception\NonValidChannelException;
+use Omnipay\Przelewy24\Message\AbstractRequest\PurchaseRequest;
+use Omnipay\Przelewy24\Message\AbstractRequest\CompletePurchaseRequest;
 use Omnipay\Tests\GatewayTestCase;
 
 class GatewayTest extends GatewayTestCase
@@ -90,7 +92,7 @@ class GatewayTest extends GatewayTestCase
     {
         $request = $this->gateway->purchase(array('amount' => '10.00'));
 
-        $this->assertInstanceOf('Omnipay\Przelewy24\Message\PurchaseRequest', $request);
+        $this->assertInstanceOf(PurchaseRequest::class, $request);
         $this->assertSame('10.00', $request->getAmount());
     }
 
@@ -101,7 +103,7 @@ class GatewayTest extends GatewayTestCase
     {
         $request = $this->gateway->completePurchase(array('amount' => '10.00'));
 
-        $this->assertInstanceOf('Omnipay\Przelewy24\Message\CompletePurchaseRequest', $request);
+        $this->assertInstanceOf(CompletePurchaseRequest::class, $request);
         $this->assertSame('10.00', $request->getAmount());
     }
 }
