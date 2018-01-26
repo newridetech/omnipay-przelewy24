@@ -95,17 +95,30 @@ abstract class AbstractRequest extends BaseAbstractRequest
      */
     protected function sendRequest($method, $endpoint, array $data = [])
     {
+        $this->httpClient->getEventDispatcher()->addListener(
+            'request.error',
+            function (Event $event) {
+                /**
+                 * @var \Guzzle\Http\Message\Response $response
+                 */
+                $response = $event['response'];
+
+                if ($response->isError()) {
+                    $event->stopPropagation();
+                }
+            }
+        );
+
         $data['p24_merchant_id'] = $this->getMerchantId();
         $data['p24_pos_id'] = $this->getMerchantId();
 
         $httpRequest = $this->httpClient->createRequest(
             $method,
             $this->getEndpoint() . $endpoint,
-            [
-                'form_params' => $data
-            ]
+            null,
+            $data
         );
 
-        return $this->httpClient->sendRequest($httpRequest);
+        return $httpRequest->send();
     }
 }

@@ -22,14 +22,14 @@
   "autoload": {
     "psr-4": { "Omnipay\\Przelewy24\\" : "src/" }
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "require": {
-    "omnipay/common": "^3",
+    "omnipay/common": "^2",
     "php": "^7",
     "php-http/guzzle6-adapter": "^1.2@dev"
   },
   "require-dev": {
-    "omnipay/tests": "~3"
+    "omnipay/tests": "^2"
   },
   "scripts": {
     "test": "phpunit"
