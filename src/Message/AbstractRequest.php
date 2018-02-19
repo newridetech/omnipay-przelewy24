@@ -83,7 +83,17 @@ abstract class AbstractRequest extends BaseAbstractRequest
      */
     public function getEndpoint()
     {
-        return $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
+        return $this->testMode() ? $this->testEndpoint : $this->liveEndpoint;
+    }
+
+    public function testMode(): bool
+    {
+        $testMode = $this->getTestMode();
+        if (empty($testMode)) {
+            return false;
+        }
+
+        return filter_var($testMode, FILTER_VALIDATE_BOOLEAN);
     }
 
     /**
