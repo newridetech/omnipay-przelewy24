@@ -88,12 +88,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
 
     public function testMode(): bool
     {
-        $testMode = $this->getTestMode();
-        if (empty($testMode)) {
-            return false;
-        }
-
-        return filter_var($testMode, FILTER_VALIDATE_BOOLEAN);
+        return filter_var($this->getTestMode(), FILTER_VALIDATE_BOOLEAN);
     }
 
     /**
